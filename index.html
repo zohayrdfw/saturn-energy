@@ -19,13 +19,13 @@
 <meta name="twitter:image" content="https://saturnenergy.net/assets/hero-frame.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --space:#0B0F1C; --space-2:#0E1424; --nebula:#141A2C;
     --gold:#E7BD80; --gold-hi:#F6DCAE; --star:#ECEAE3; --muted:#98A1B6; --ion:#6E7BB0;
     --line:rgba(231,189,128,0.16); --line-cool:rgba(255,255,255,0.08);
-    --display:'Sora',system-ui,sans-serif; --body:'Hanken Grotesk',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+    --display:'Sora',system-ui,sans-serif; --body:'Hanken Grotesk',system-ui,sans-serif; --mono:'Hanken Grotesk',system-ui,sans-serif;
     --maxw:1200px; --pad:clamp(20px,5vw,64px);
   }
   *{box-sizing:border-box}
@@ -40,9 +40,8 @@
   a{color:inherit; text-decoration:none}
   img,video{display:block; max-width:100%}
   .wrap{max-width:var(--maxw); margin:0 auto; padding-inline:var(--pad)}
-  .mono{font-family:var(--mono); text-transform:uppercase; letter-spacing:.22em; font-size:.7rem; color:var(--gold)}
-  .eyebrow{display:inline-flex; align-items:center; gap:.7em; font-family:var(--mono); text-transform:uppercase; letter-spacing:.24em; font-size:.68rem; color:var(--gold)}
-  .eyebrow::before{content:""; width:26px; height:1px; background:var(--gold); opacity:.6}
+  .mono{font-family:var(--body); font-weight:600; text-transform:uppercase; letter-spacing:.12em; font-size:.72rem; color:var(--gold)}
+  .eyebrow{display:inline-flex; align-items:center; font-family:var(--body); font-weight:600; text-transform:uppercase; letter-spacing:.12em; font-size:.76rem; color:var(--gold)}
 
   /* starfield behind everything */
   #stars{position:fixed; inset:0; z-index:0; pointer-events:none}
@@ -64,7 +63,7 @@
   .brand img{width:36px; height:36px; filter:drop-shadow(0 0 12px rgba(231,189,128,.4))}
   .brand .wm{display:flex; flex-direction:column; line-height:1}
   .brand .wm b{font-family:var(--display); font-weight:800; letter-spacing:.15em; font-size:1rem}
-  .brand .wm span{font-family:var(--mono); letter-spacing:.42em; font-size:.48rem; color:var(--gold); margin-top:3px}
+  .brand .wm span{font-family:var(--body); font-weight:600; letter-spacing:.32em; font-size:.5rem; color:var(--gold); margin-top:4px; padding-left:.32em}
   .foot .brand{flex-direction:column; align-items:flex-start; gap:7px}
   .foot .brand .wm{align-items:flex-start}
   .nav__links{display:flex; align-items:center; gap:34px}
@@ -87,7 +86,7 @@
   .hero h1 .dot{color:var(--gold)}
   .hero p.sub{margin-top:22px; font-size:clamp(1.05rem,1.6vw,1.28rem); color:#C7CDDB; max-width:52ch}
   .hero__cta{margin-top:34px; display:flex; flex-wrap:wrap; gap:14px}
-  .hero__meta{margin-top:30px; display:flex; align-items:center; gap:16px; color:var(--muted); font-family:var(--mono); font-size:.68rem; letter-spacing:.2em; text-transform:uppercase}
+  .hero__meta{margin-top:30px; display:flex; align-items:center; gap:14px; color:var(--muted); font-family:var(--body); font-weight:600; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase}
   .hero__meta .pip{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
 
   /* section shell */
@@ -170,7 +169,14 @@
   .hero__content .hero__cta{animation-delay:3.7s}
   .hero__content .hero__meta{animation-delay:4.1s}
   @keyframes heroFade{from{opacity:0; transform:translateY(28px)} to{opacity:1; transform:none}}
-  @media(prefers-reduced-motion:reduce){ .hero__content>*{animation:none!important; opacity:1!important; transform:none!important} }
+  /* nav eases in together with the hero content */
+  header .brand, .nav__links a, .nav__cta{opacity:0; animation:navFade .8s cubic-bezier(.2,.7,.2,1) forwards}
+  header .brand{animation-delay:2.15s}
+  .nav__links a:nth-of-type(1){animation-delay:2.35s}
+  .nav__links a:nth-of-type(2){animation-delay:2.45s}
+  .nav__cta{animation-delay:2.55s}
+  @keyframes navFade{from{opacity:0; transform:translateY(-8px)} to{opacity:1; transform:none}}
+  @media(prefers-reduced-motion:reduce){ .hero__content>*, header .brand, .nav__links a, .nav__cta{animation:none!important; opacity:1!important; transform:none!important} }
 
   /* ── Mobile ─────────────────────────────────────────────── */
   @media(max-width:768px){
@@ -226,9 +232,9 @@
     <div class="hero__scrim"></div>
     <div class="wrap">
       <div class="hero__content">
-        <span class="eyebrow">Solar Detach &amp; Reset · Solar Cleaning · HVAC</span>
-        <h1>Solar off<span class="dot">.</span><br>Roof on<span class="dot">.</span><br>Solar back<span class="dot">.</span></h1>
-        <p class="sub">Saturn Energy lifts your solar for roofing work and resets it like new, brings tired panels back to full output, and keeps your home comfortable with expert HVAC. All across North Texas.</p>
+        <span class="eyebrow">Solar Detach &amp; Reset · Cleaning · HVAC</span>
+        <h1>Home energy,<br>in perfect orbit<span class="dot">.</span></h1>
+        <p class="sub">Precise, careful work on your solar and your home's comfort, across North Texas. Done right the first time.</p>
         <div class="hero__cta">
           <a class="btn btn--gold" href="#quote">Get a free quote</a>
           <a class="btn btn--ghost" href="tel:+19725550000">Call (972) 555-0000</a>
@@ -251,19 +257,16 @@
           <img class="ico" src="assets/icon-dnr.webp" alt="" width="68" height="68">
           <h3>Solar Detach &amp; Reset</h3>
           <p>New roof with panels in the way? We remove your entire array, label and protect it, then reset it to spec. Remounted, rewired, resealed, and recommissioned, so it produces like day one.</p>
-          <div class="tags"><span class="tag">Roof ready</span><span class="tag">Warranty safe</span><span class="tag">Recommissioned</span></div>
         </article>
         <article class="card reveal">
           <img class="ico" src="assets/icon-clean.webp" alt="" width="68" height="68">
           <h3>Solar Cleaning</h3>
           <p>Dust, pollen, and Texas grime quietly cost you production every month. We deep clean your panels safely, with no harsh tools and no warranty risk, and bring the output back.</p>
-          <div class="tags"><span class="tag">More output</span><span class="tag">Safe process</span><span class="tag">Seasonal</span></div>
         </article>
         <article class="card reveal">
           <img class="ico" src="assets/icon-hvac.webp" alt="" width="68" height="68">
           <h3>HVAC</h3>
           <p>High efficiency heating and cooling built for Texas extremes. Clean installs, fast repairs, and seasonal tune ups that keep your home comfortable and your bills in check.</p>
-          <div class="tags"><span class="tag">Install</span><span class="tag">Repair</span><span class="tag">Tune-ups</span></div>
         </article>
       </div>
     </div>
