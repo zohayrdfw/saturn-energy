@@ -231,10 +231,10 @@
       <div class="hero__content">
         <span class="eyebrow">Solar Detach &amp; Reset · Cleaning · HVAC</span>
         <h1>Home energy,<br>in perfect orbit<span class="dot">.</span></h1>
-        <p class="sub">Precise, careful work on your solar and your home's comfort, across North Texas. Done right the first time.</p>
+        <p class="sub">The North Texas crew that takes your solar off for a new roof and resets it like new, with your production and warranties fully intact.</p>
         <div class="hero__cta">
           <a class="btn btn--gold" href="#quote">Get a free quote</a>
-          <a class="btn btn--ghost" href="tel:+19725550000">Call (972) 555-0000</a>
+          <a class="btn btn--ghost" href="mailto:info@saturnenergy.net">Email us</a>
         </div>
         <div class="hero__meta"><span class="pip"></span> Serving North Texas · Licensed &amp; insured</div>
       </div>
@@ -277,7 +277,6 @@
         <h2>Tell us what your home needs.</h2>
         <p class="lead">Detach and reset, a panel cleaning, or HVAC. Send the basics and a Saturn tech gets right back to you, usually same day.</p>
         <div class="direct">
-          <span><span class="k">Call</span><a href="tel:+19725550000">(972) 555-0000</a></span>
           <span><span class="k">Email</span><a href="mailto:info@saturnenergy.net">info@saturnenergy.net</a></span>
           <span><span class="k">Area</span>Dallas · Fort Worth · Plano · McKinney · Frisco · Denton</span>
         </div>
@@ -286,7 +285,7 @@
         <div class="form-body">
           <h3>Request a free quote</h3>
           <div class="field"><label for="n">Name</label><input id="n" name="name" autocomplete="name" required placeholder="Jordan Homeowner"></div>
-          <div class="field"><label for="p">Phone</label><input id="p" name="phone" type="tel" autocomplete="tel" required placeholder="(972) 555-0100"></div>
+          <div class="field"><label for="p">Email</label><input id="p" name="email" type="email" autocomplete="email" required placeholder="you@email.com"></div>
           <div class="field"><label for="s">What do you need?</label>
             <select id="s" name="service">
               <option>Solar Detach &amp; Reset</option>
@@ -302,7 +301,7 @@
         <div class="sent">
           <svg class="ring" viewBox="0 0 48 48" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="24" cy="24" r="20" opacity=".3"/><path d="M15 24l6 6 12-12" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <h3 style="font-family:var(--display)">Request received.</h3>
-          <p style="color:var(--muted);margin-top:8px">We'll be in touch shortly. Prefer to talk now? Call (972) 555-0000.</p>
+          <p style="color:var(--muted);margin-top:8px">We'll reply by email shortly. You can also reach us at info@saturnenergy.net.</p>
         </div>
       </form>
     </div>
@@ -327,7 +326,6 @@
         </div>
         <div class="col">
           <h4>Contact</h4>
-          <a href="tel:+19725550000">(972) 555-0000</a>
           <a href="mailto:info@saturnenergy.net">info@saturnenergy.net</a>
           <p>Dallas, Fort Worth &amp; North Texas</p>
         </div>
@@ -361,9 +359,29 @@
     v.play && v.play().catch(()=>{});
   })();
 
-  // form (client-side; wire to an endpoint before launch)
+  // form -> emails info@saturnenergy.net (Formsubmit)
   const f=document.getElementById('quoteForm');
-  f.addEventListener('submit',(e)=>{ e.preventDefault(); if(f.company.value) return; f.classList.add('done'); });
+  f.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    if(f.company.value) return; // honeypot
+    const btn=f.querySelector('button[type="submit"]'); const label=btn.textContent;
+    btn.disabled=true; btn.textContent='Sending…';
+    const data=Object.fromEntries(new FormData(f).entries());
+    data._subject='New Saturn Energy quote request';
+    data._template='table';
+    try{
+      const res=await fetch('https://formsubmit.co/ajax/info@saturnenergy.net',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(data)
+      });
+      if(!res.ok) throw new Error('bad');
+      f.classList.add('done');
+    }catch(_){
+      btn.disabled=false; btn.textContent=label;
+      const fine=f.querySelector('.fine'); if(fine){ fine.style.color='#ff9a9a'; fine.textContent='Something went wrong — email info@saturnenergy.net'; }
+    }
+  });
 
   // subtle starfield
   (function(){
