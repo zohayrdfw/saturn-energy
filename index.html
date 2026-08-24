@@ -60,12 +60,13 @@
   header{position:fixed; inset:0 0 auto 0; z-index:40; transition:.3s ease}
   header.scrolled{background:rgba(11,15,28,.72); backdrop-filter:blur(14px) saturate(140%); border-bottom:1px solid var(--line-cool)}
   .nav{display:flex; align-items:center; justify-content:space-between; height:74px}
-  .brand{display:flex; flex-direction:column; align-items:center; gap:5px}
-  .brand img{width:30px; height:30px; filter:drop-shadow(0 0 12px rgba(231,189,128,.45))}
-  .brand .wm{display:flex; flex-direction:column; align-items:center; line-height:1}
-  .brand .wm b{font-family:var(--display); font-weight:800; letter-spacing:.2em; font-size:.8rem}
-  .brand .wm span{font-family:var(--mono); letter-spacing:.46em; font-size:.42rem; color:var(--gold); margin-top:3px; padding-left:.46em}
-  .nav{height:86px}
+  .brand{display:flex; align-items:center; gap:11px}
+  .brand img{width:36px; height:36px; filter:drop-shadow(0 0 12px rgba(231,189,128,.4))}
+  .brand .wm{display:flex; flex-direction:column; line-height:1}
+  .brand .wm b{font-family:var(--display); font-weight:800; letter-spacing:.15em; font-size:1rem}
+  .brand .wm span{font-family:var(--mono); letter-spacing:.42em; font-size:.48rem; color:var(--gold); margin-top:3px}
+  .foot .brand{flex-direction:column; align-items:flex-start; gap:7px}
+  .foot .brand .wm{align-items:flex-start}
   .nav__links{display:flex; align-items:center; gap:34px}
   .nav__links a{font-size:.86rem; color:var(--muted); transition:.2s; letter-spacing:.01em}
   .nav__links a:hover{color:var(--star)}
@@ -203,7 +204,7 @@
       <div class="hero__content">
         <span class="eyebrow">Solar Detach &amp; Reset · Solar Cleaning · HVAC</span>
         <h1>Solar off<span class="dot">.</span><br>Roof on<span class="dot">.</span><br>Solar back<span class="dot">.</span></h1>
-        <p class="sub">Saturn Energy pulls your solar for roofing work and resets it like new, brings tired panels back to full output, and keeps your home comfortable with expert HVAC. All across North Texas.</p>
+        <p class="sub">Saturn Energy lifts your solar for roofing work and resets it like new, brings tired panels back to full output, and keeps your home comfortable with expert HVAC. All across North Texas.</p>
         <div class="hero__cta">
           <a class="btn btn--gold" href="#quote">Get a free quote</a>
           <a class="btn btn--ghost" href="tel:+19725550000">Call (972) 555-0000</a>
@@ -223,21 +224,18 @@
       </div>
       <div class="services">
         <article class="card reveal">
-          <div class="no">SVC 01</div>
           <img class="ico" src="assets/icon-dnr.webp" alt="" width="68" height="68">
           <h3>Solar Detach &amp; Reset</h3>
           <p>New roof with panels in the way? We remove your entire array, label and protect it, then reset it to spec. Remounted, rewired, resealed, and recommissioned, so it produces like day one.</p>
           <div class="tags"><span class="tag">Roof ready</span><span class="tag">Warranty safe</span><span class="tag">Recommissioned</span></div>
         </article>
         <article class="card reveal">
-          <div class="no">SVC 02</div>
           <img class="ico" src="assets/icon-clean.webp" alt="" width="68" height="68">
           <h3>Solar Cleaning</h3>
           <p>Dust, pollen, and Texas grime quietly cost you production every month. We deep clean your panels safely, with no harsh tools and no warranty risk, and bring the output back.</p>
           <div class="tags"><span class="tag">More output</span><span class="tag">Safe process</span><span class="tag">Seasonal</span></div>
         </article>
         <article class="card reveal">
-          <div class="no">SVC 03</div>
           <img class="ico" src="assets/icon-hvac.webp" alt="" width="68" height="68">
           <h3>HVAC</h3>
           <p>High efficiency heating and cooling built for Texas extremes. Clean installs, fast repairs, and seasonal tune ups that keep your home comfortable and your bills in check.</p>
@@ -290,7 +288,7 @@
           </div>
           <input type="text" name="company" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
           <button class="btn btn--gold" type="submit">Request my quote</button>
-          <p class="fine">No spam · Serving North Texas</p>
+          <p class="fine">Serving North Texas</p>
         </div>
         <div class="sent">
           <svg class="ring" viewBox="0 0 48 48" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="24" cy="24" r="20" opacity=".3"/><path d="M15 24l6 6 12-12" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -309,7 +307,8 @@
             <img src="assets/saturn_mark_transparent.png" alt="">
             <span class="wm"><b>SATURN</b><span>ENERGY</span></span>
           </a>
-          <p class="cities">Solar detach &amp; reset, solar cleaning, and HVAC for homeowners across North Texas.</p>
+          <p style="font-family:var(--mono);text-transform:uppercase;letter-spacing:.18em;font-size:.64rem;color:var(--gold);margin-top:18px">From outer space to North Texas.</p>
+          <p class="cities" style="margin-top:10px">Solar detach &amp; reset, solar cleaning, and HVAC for homeowners across North Texas.</p>
         </div>
         <div class="col">
           <h4>Services</h4>
