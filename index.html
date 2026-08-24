@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saturn Energy | Solar Detach &amp; Reset, Cleaning &amp; HVAC</title>
+<meta name="description" content="Saturn Energy handles solar detach &amp; reset, solar cleaning, and HVAC for homeowners across North Texas. Solar off. Roof on. Solar back.">
+<meta name="theme-color" content="#0B0F1C">
+<link rel="icon" type="image/png" href="assets/saturn_mark_transparent.png">
+<link rel="apple-touch-icon" href="assets/saturn_mark_transparent.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://saturnenergy.net/">
+<meta property="og:title" content="Saturn Energy | Solar &amp; HVAC in North Texas">
+<meta property="og:description" content="Solar detach &amp; reset, solar cleaning, and HVAC for homeowners across North Texas. Solar off. Roof on. Solar back.">
+<meta property="og:image" content="https://saturnenergy.net/assets/hero-frame.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Saturn Energy | Solar &amp; HVAC in North Texas">
+<meta name="twitter:description" content="Solar detach &amp; reset, solar cleaning, and HVAC across North Texas.">
+<meta name="twitter:image" content="https://saturnenergy.net/assets/hero-frame.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --space:#0B0F1C; --space-2:#0E1424; --nebula:#141A2C;
+    --gold:#E7BD80; --gold-hi:#F6DCAE; --star:#ECEAE3; --muted:#98A1B6; --ion:#6E7BB0;
+    --line:rgba(231,189,128,0.16); --line-cool:rgba(255,255,255,0.08);
+    --display:'Sora',system-ui,sans-serif; --body:'Hanken Grotesk',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+    --maxw:1200px; --pad:clamp(20px,5vw,64px);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--space); color:var(--star);
+    font-family:var(--body); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:var(--display); font-weight:800; line-height:1.03; text-wrap:balance; margin:0}
+  p{margin:0}
+  a{color:inherit; text-decoration:none}
+  img,video{display:block; max-width:100%}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding-inline:var(--pad)}
+  .mono{font-family:var(--mono); text-transform:uppercase; letter-spacing:.22em; font-size:.7rem; color:var(--gold)}
+  .eyebrow{display:inline-flex; align-items:center; gap:.7em; font-family:var(--mono); text-transform:uppercase; letter-spacing:.24em; font-size:.68rem; color:var(--gold)}
+  .eyebrow::before{content:""; width:26px; height:1px; background:var(--gold); opacity:.6}
+
+  /* starfield behind everything */
+  #stars{position:fixed; inset:0; z-index:0; pointer-events:none}
+  .app{position:relative; z-index:1}
+
+  /* buttons */
+  .btn{display:inline-flex; align-items:center; gap:.6em; font-family:var(--display); font-weight:700; font-size:.95rem;
+    padding:.85em 1.5em; border-radius:999px; cursor:pointer; border:1px solid transparent; transition:.25s ease; white-space:nowrap}
+  .btn--gold{background:var(--gold); color:#1a1206}
+  .btn--gold:hover{background:var(--gold-hi); transform:translateY(-2px); box-shadow:0 12px 34px -12px rgba(231,189,128,.6)}
+  .btn--ghost{border-color:var(--line); color:var(--star); background:rgba(255,255,255,.02); backdrop-filter:blur(6px)}
+  .btn--ghost:hover{border-color:var(--gold); color:var(--gold-hi)}
+
+  /* nav */
+  header{position:fixed; inset:0 0 auto 0; z-index:40; transition:.3s ease}
+  header.scrolled{background:rgba(11,15,28,.72); backdrop-filter:blur(14px) saturate(140%); border-bottom:1px solid var(--line-cool)}
+  .nav{display:flex; align-items:center; justify-content:space-between; height:74px}
+  .brand{display:flex; flex-direction:column; align-items:center; gap:5px}
+  .brand img{width:30px; height:30px; filter:drop-shadow(0 0 12px rgba(231,189,128,.45))}
+  .brand .wm{display:flex; flex-direction:column; align-items:center; line-height:1}
+  .brand .wm b{font-family:var(--display); font-weight:800; letter-spacing:.2em; font-size:.8rem}
+  .brand .wm span{font-family:var(--mono); letter-spacing:.46em; font-size:.42rem; color:var(--gold); margin-top:3px; padding-left:.46em}
+  .nav{height:86px}
+  .nav__links{display:flex; align-items:center; gap:34px}
+  .nav__links a{font-size:.86rem; color:var(--muted); transition:.2s; letter-spacing:.01em}
+  .nav__links a:hover{color:var(--star)}
+  .nav__cta{display:flex; align-items:center; gap:18px}
+  .menu-btn{display:none; background:none; border:0; color:var(--star); cursor:pointer}
+  @media(max-width:860px){ .nav__links{display:none} }
+
+  /* hero */
+  .hero{position:relative; min-height:100svh; display:flex; align-items:center; overflow:hidden}
+  .hero__media{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:70% center}
+  .hero__scrim{position:absolute; inset:0;
+    background:
+      linear-gradient(90deg, rgba(11,15,28,.96) 0%, rgba(11,15,28,.8) 26%, rgba(11,15,28,.28) 52%, rgba(11,15,28,0) 72%),
+      linear-gradient(0deg, rgba(11,15,28,.85) 0%, rgba(11,15,28,0) 42%);}
+  .hero .wrap{position:relative; z-index:2; width:100%; padding-top:90px; padding-bottom:56px}
+  .hero__content{max-width:620px}
+  .hero h1{font-size:clamp(2.6rem,6.4vw,5rem); margin:22px 0 0}
+  .hero h1 .dot{color:var(--gold)}
+  .hero p.sub{margin-top:22px; font-size:clamp(1.05rem,1.6vw,1.28rem); color:#C7CDDB; max-width:52ch}
+  .hero__cta{margin-top:34px; display:flex; flex-wrap:wrap; gap:14px}
+  .hero__meta{margin-top:30px; display:flex; align-items:center; gap:16px; color:var(--muted); font-family:var(--mono); font-size:.68rem; letter-spacing:.2em; text-transform:uppercase}
+  .hero__meta .pip{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+
+  /* section shell */
+  section{position:relative; z-index:1}
+  .band{padding:clamp(70px,10vw,130px) 0}
+  .sec-head{max-width:640px}
+  .sec-head h2{font-size:clamp(2rem,4.4vw,3.2rem); margin-top:18px}
+  .sec-head p{margin-top:16px; color:var(--muted)}
+
+  /* services */
+  .services{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:54px}
+  @media(max-width:840px){ .services{grid-template-columns:1fr} }
+  .card{position:relative; background:linear-gradient(180deg,var(--nebula),#0F1526); border:1px solid var(--line-cool);
+    border-radius:20px; padding:34px 30px 32px; overflow:hidden; transition:.3s ease}
+  .card:hover{transform:translateY(-6px); border-color:var(--line)}
+  .card::after{content:""; position:absolute; inset:0; border-radius:20px; pointer-events:none;
+    background:radial-gradient(120% 80% at 90% -10%, rgba(231,189,128,.14), transparent 55%); opacity:0; transition:.3s}
+  .card:hover::after{opacity:1}
+  .card .no{font-family:var(--mono); font-size:.64rem; letter-spacing:.2em; color:var(--gold); opacity:.8}
+  .card .ico{width:68px; height:68px; margin:2px 0 20px; border-radius:16px; object-fit:cover; box-shadow:inset 0 0 0 1px var(--line-cool)}
+  .card h3{font-size:1.4rem}
+  .card p{margin-top:12px; color:var(--muted); font-size:.98rem}
+  .card .tags{margin-top:18px; display:flex; flex-wrap:wrap; gap:8px}
+  .tag{font-family:var(--mono); font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
+    border:1px solid var(--line-cool); border-radius:999px; padding:5px 11px}
+
+  /* process */
+  .process{border-top:1px solid var(--line-cool); background:linear-gradient(180deg,#0A0E1A,#0C1120)}
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:52px}
+  @media(max-width:840px){ .steps{grid-template-columns:1fr} }
+  .step{position:relative; padding-top:26px; border-top:1px solid var(--line)}
+  .step .st{font-family:var(--mono); font-size:.62rem; letter-spacing:.18em; color:var(--gold)}
+  .step h3{margin-top:16px; font-size:1.35rem}
+  .step p{margin-top:10px; color:var(--muted); font-size:.96rem}
+  .step .idx{position:absolute; top:22px; right:0; font-family:var(--display); font-weight:800; font-size:2.4rem; color:rgba(231,189,128,.16)}
+
+  /* contact */
+  .contact{border-top:1px solid var(--line-cool)}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center}
+  @media(max-width:840px){ .contact-grid{grid-template-columns:1fr; gap:36px} }
+  .contact h2{font-size:clamp(2.1rem,4.6vw,3.4rem)}
+  .contact .lead{margin-top:18px; color:var(--muted); max-width:44ch}
+  .contact .direct{margin-top:26px; display:flex; flex-direction:column; gap:10px; font-family:var(--mono); font-size:.82rem; letter-spacing:.04em}
+  .contact .direct a{color:var(--star)} .contact .direct a:hover{color:var(--gold-hi)}
+  .contact .direct .k{color:var(--gold); text-transform:uppercase; letter-spacing:.2em; font-size:.62rem; margin-right:10px}
+  form{background:linear-gradient(180deg,var(--nebula),#0F1526); border:1px solid var(--line-cool); border-radius:22px; padding:30px}
+  form h3{font-size:1.25rem; margin-bottom:6px}
+  .field{margin-top:16px}
+  label{display:block; font-family:var(--mono); text-transform:uppercase; letter-spacing:.16em; font-size:.58rem; color:var(--muted); margin-bottom:8px}
+  input,select{width:100%; background:#0B1020; border:1px solid var(--line-cool); color:var(--star);
+    font-family:var(--body); font-size:1rem; padding:13px 14px; border-radius:12px; outline:none; transition:.2s}
+  input:focus,select:focus{border-color:var(--gold); box-shadow:0 0 0 3px rgba(231,189,128,.14)}
+  select{appearance:none; background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);
+    background-position:calc(100% - 20px) 20px, calc(100% - 14px) 20px; background-size:6px 6px,6px 6px; background-repeat:no-repeat}
+  form .btn{width:100%; justify-content:center; margin-top:22px; padding-block:1em}
+  form .fine{margin-top:12px; text-align:center; font-family:var(--mono); font-size:.58rem; letter-spacing:.1em; color:var(--muted); text-transform:uppercase}
+  .sent{display:none; text-align:center; padding:26px 6px}
+  .sent .ring{width:56px;height:56px;margin:0 auto 14px}
+  form.done .form-body{display:none} form.done .sent{display:block}
+
+  /* footer */
+  footer{border-top:1px solid var(--line-cool); background:#080B15; padding:56px 0 40px}
+  .foot{display:flex; flex-wrap:wrap; gap:30px; justify-content:space-between; align-items:flex-start}
+  .foot .brand img{width:34px;height:34px}
+  .foot .cities{color:var(--muted); font-size:.9rem; max-width:34ch; margin-top:14px}
+  .foot .col h4{font-family:var(--mono); text-transform:uppercase; letter-spacing:.2em; font-size:.6rem; color:var(--gold); margin:0 0 12px}
+  .foot .col a,.foot .col p{display:block; color:var(--muted); font-size:.9rem; margin:6px 0}
+  .foot .col a:hover{color:var(--star)}
+  .foot-base{margin-top:40px; padding-top:20px; border-top:1px solid var(--line-cool); display:flex; flex-wrap:wrap; gap:12px;
+    justify-content:space-between; color:var(--muted); font-family:var(--mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase}
+
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1; transform:none}
+  @media(prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none} html{scroll-behavior:auto} }
+  /* hero entrance — content fades in through the back half of the video, settling as the ship lands */
+  .hero__content .eyebrow,.hero__content h1,.hero__content .sub,.hero__content .hero__cta,.hero__content .hero__meta{opacity:0; animation:heroFade 1s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero__content .eyebrow{animation-delay:2.3s}
+  .hero__content h1{animation-delay:2.6s}
+  .hero__content .sub{animation-delay:3.2s}
+  .hero__content .hero__cta{animation-delay:3.7s}
+  .hero__content .hero__meta{animation-delay:4.1s}
+  @keyframes heroFade{from{opacity:0; transform:translateY(28px)} to{opacity:1; transform:none}}
+  @media(prefers-reduced-motion:reduce){ .hero__content>*{animation:none!important; opacity:1!important; transform:none!important} }
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="app">
+
+  <header id="hdr">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Saturn Energy home">
+        <img src="assets/saturn_mark_transparent.png" alt="">
+        <span class="wm"><b>SATURN</b><span>ENERGY</span></span>
+      </a>
+      <nav class="nav__links">
+        <a href="#services">Services</a>
+        <a href="#process">How it works</a>
+        <a href="#area">Service area</a>
+      </nav>
+      <div class="nav__cta">
+        <a class="btn btn--gold" href="#quote">Get a quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <video class="hero__media" autoplay muted playsinline poster="assets/hero-poster.webp">
+      <source src="assets/hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero__scrim"></div>
+    <div class="wrap">
+      <div class="hero__content">
+        <span class="eyebrow">Solar Detach &amp; Reset · Solar Cleaning · HVAC</span>
+        <h1>Solar off<span class="dot">.</span><br>Roof on<span class="dot">.</span><br>Solar back<span class="dot">.</span></h1>
+        <p class="sub">Saturn Energy pulls your solar for roofing work and resets it like new, brings tired panels back to full output, and keeps your home comfortable with expert HVAC. All across North Texas.</p>
+        <div class="hero__cta">
+          <a class="btn btn--gold" href="#quote">Get a free quote</a>
+          <a class="btn btn--ghost" href="tel:+19725550000">Call (972) 555-0000</a>
+        </div>
+        <div class="hero__meta"><span class="pip"></span> Serving North Texas · Licensed &amp; insured</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="band" id="services">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">What we do</span>
+        <h2>Three things, done with orbital precision.</h2>
+        <p>We don't try to do everything. Saturn focuses on the work most crews rush, and gets it exactly right.</p>
+      </div>
+      <div class="services">
+        <article class="card reveal">
+          <div class="no">SVC 01</div>
+          <img class="ico" src="assets/icon-dnr.webp" alt="" width="68" height="68">
+          <h3>Solar Detach &amp; Reset</h3>
+          <p>New roof with panels in the way? We remove your entire array, label and protect it, then reset it to spec. Remounted, rewired, resealed, and recommissioned, so it produces like day one.</p>
+          <div class="tags"><span class="tag">Roof ready</span><span class="tag">Warranty safe</span><span class="tag">Recommissioned</span></div>
+        </article>
+        <article class="card reveal">
+          <div class="no">SVC 02</div>
+          <img class="ico" src="assets/icon-clean.webp" alt="" width="68" height="68">
+          <h3>Solar Cleaning</h3>
+          <p>Dust, pollen, and Texas grime quietly cost you production every month. We deep clean your panels safely, with no harsh tools and no warranty risk, and bring the output back.</p>
+          <div class="tags"><span class="tag">More output</span><span class="tag">Safe process</span><span class="tag">Seasonal</span></div>
+        </article>
+        <article class="card reveal">
+          <div class="no">SVC 03</div>
+          <img class="ico" src="assets/icon-hvac.webp" alt="" width="68" height="68">
+          <h3>HVAC</h3>
+          <p>High efficiency heating and cooling built for Texas extremes. Clean installs, fast repairs, and seasonal tune ups that keep your home comfortable and your bills in check.</p>
+          <div class="tags"><span class="tag">Install</span><span class="tag">Repair</span><span class="tag">Tune-ups</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="band process" id="process">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">The detach &amp; reset, step by step</span>
+        <h2>Your panels come off, your roof gets done, your power comes back.</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><span class="idx">01</span><div class="st">Station 01 · Detach</div><h3>We remove &amp; protect</h3><p>Every panel and rail comes off, labeled and photographed, then stored safely on site or off. Your array is out of the roofer's way and out of harm's reach.</p></div>
+        <div class="step reveal"><span class="idx">02</span><div class="st">Station 02 · Roof</div><h3>Your roofer works clear</h3><p>A clean, panel free deck means the roof gets done right, with no working around your system and no risk to your investment.</p></div>
+        <div class="step reveal"><span class="idx">03</span><div class="st">Station 03 · Reset</div><h3>We reset &amp; recommission</h3><p>We remount, rewire, and reseal to spec, then confirm your system is producing before we leave. Good as new, often better.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="band contact" id="quote">
+    <div class="wrap contact-grid">
+      <div class="reveal" id="area">
+        <span class="eyebrow">Get a quote</span>
+        <h2>Tell us what your home needs.</h2>
+        <p class="lead">Detach and reset, a panel cleaning, or HVAC. Send the basics and a Saturn tech gets right back to you, usually same day.</p>
+        <div class="direct">
+          <span><span class="k">Call</span><a href="tel:+19725550000">(972) 555-0000</a></span>
+          <span><span class="k">Email</span><a href="mailto:info@saturnenergy.net">info@saturnenergy.net</a></span>
+          <span><span class="k">Area</span>Dallas · Fort Worth · Plano · McKinney · Frisco · Denton</span>
+        </div>
+      </div>
+      <form class="reveal" id="quoteForm" novalidate>
+        <div class="form-body">
+          <h3>Request a free quote</h3>
+          <div class="field"><label for="n">Name</label><input id="n" name="name" autocomplete="name" required placeholder="Jordan Homeowner"></div>
+          <div class="field"><label for="p">Phone</label><input id="p" name="phone" type="tel" autocomplete="tel" required placeholder="(972) 555-0100"></div>
+          <div class="field"><label for="s">What do you need?</label>
+            <select id="s" name="service">
+              <option>Solar Detach &amp; Reset</option>
+              <option>Solar Cleaning</option>
+              <option>HVAC</option>
+              <option>Not sure — help me figure it out</option>
+            </select>
+          </div>
+          <input type="text" name="company" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+          <button class="btn btn--gold" type="submit">Request my quote</button>
+          <p class="fine">No spam · Serving North Texas</p>
+        </div>
+        <div class="sent">
+          <svg class="ring" viewBox="0 0 48 48" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="24" cy="24" r="20" opacity=".3"/><path d="M15 24l6 6 12-12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3 style="font-family:var(--display)">Request received.</h3>
+          <p style="color:var(--muted);margin-top:8px">We'll be in touch shortly. Prefer to talk now? Call (972) 555-0000.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div style="max-width:340px">
+          <a class="brand" href="#top" aria-label="Saturn Energy">
+            <img src="assets/saturn_mark_transparent.png" alt="">
+            <span class="wm"><b>SATURN</b><span>ENERGY</span></span>
+          </a>
+          <p class="cities">Solar detach &amp; reset, solar cleaning, and HVAC for homeowners across North Texas.</p>
+        </div>
+        <div class="col">
+          <h4>Services</h4>
+          <a href="#services">Solar Detach &amp; Reset</a>
+          <a href="#services">Solar Cleaning</a>
+          <a href="#services">HVAC</a>
+        </div>
+        <div class="col">
+          <h4>Contact</h4>
+          <a href="tel:+19725550000">(972) 555-0000</a>
+          <a href="mailto:info@saturnenergy.net">info@saturnenergy.net</a>
+          <p>Dallas, Fort Worth &amp; North Texas</p>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>© 2026 Saturn Energy · Licensed &amp; insured</span>
+        <span>Serving North Texas</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // nav scrolled state
+  const hdr=document.getElementById('hdr');
+  const onScroll=()=>hdr.classList.toggle('scrolled', window.scrollY>40);
+  onScroll(); addEventListener('scroll', onScroll, {passive:true});
+
+  // reveal on scroll
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(Math.min(i,6)*40)+'ms'; io.observe(el); });
+
+  // ensure hero video plays (muted autoplay)
+  const v=document.querySelector('.hero__media'); if(v){ v.play&&v.play().catch(()=>{}); }
+
+  // form (client-side; wire to an endpoint before launch)
+  const f=document.getElementById('quoteForm');
+  f.addEventListener('submit',(e)=>{ e.preventDefault(); if(f.company.value) return; f.classList.add('done'); });
+
+  // subtle starfield
+  (function(){
+    const c=document.getElementById('stars'), x=c.getContext('2d'); let w,h,stars,raf;
+    const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+    function size(){ w=c.width=innerWidth; h=c.height=Math.max(innerHeight, document.body.scrollHeight); build(); }
+    function build(){ const n=Math.round(w*h/14000); stars=Array.from({length:n},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.2+.2,a:Math.random()*.6+.2,t:Math.random()*6})); draw(); }
+    function draw(){ x.clearRect(0,0,w,h);
+      // faint nebula wash
+      const g=x.createRadialGradient(w*.82,h*.12,0,w*.82,h*.12,Math.max(w,h)*.7); g.addColorStop(0,'rgba(231,189,128,0.05)'); g.addColorStop(1,'rgba(231,189,128,0)'); x.fillStyle=g; x.fillRect(0,0,w,h);
+      for(const s of stars){ const tw=reduce?s.a:s.a*(0.6+0.4*Math.sin(s.t+=0.02)); x.globalAlpha=tw; x.fillStyle= Math.random()<0.0006?'#E7BD80':'#dfe6f5'; x.beginPath(); x.arc(s.x,s.y,s.r,0,7); x.fill(); }
+      x.globalAlpha=1; if(!reduce) raf=requestAnimationFrame(draw);
+    }
+    addEventListener('resize',()=>{cancelAnimationFrame(raf);size();}); size();
+  })();
+</script>
+</body>
+</html>
